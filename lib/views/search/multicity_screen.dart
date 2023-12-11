@@ -4,6 +4,7 @@ import 'package:skyscanner_task/res/colors/ColorsHelper.dart';
 import 'package:skyscanner_task/views/search/airport_search/from_airport_selector_screen.dart';
 import 'package:skyscanner_task/views/search/dialog/cabin_selector_screen.dart';
 import 'package:skyscanner_task/views/search/dialog/travelers_quantity_screen.dart';
+import 'package:skyscanner_task/views/search/result/search_result_screen.dart';
 
 class MulticityScreen extends StatefulWidget {
   const MulticityScreen({Key? key}) : super(key: key);
@@ -200,7 +201,7 @@ class MulticityScreenState extends State<MulticityScreen> {
                 bottom: -20,
                 child: InkWell(
                   onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>FromAirportSelectorScreen()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SearchResultScreen()));
 
                   },
                   child: CircleAvatar(

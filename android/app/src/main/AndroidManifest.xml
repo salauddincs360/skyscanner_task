@@ -1,5 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.salauddincs.skyscanner_task">
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
    <application
         android:label="skyscanner_task"
         android:name="${applicationName}"

@@ -13,4 +13,6 @@ class ColorsHelper{
   var text_selected_color=Colors.blue;
 
   var button_color=Color(0xff100933);
+
+  var container_border_color=Color(0xff100933);
 }
