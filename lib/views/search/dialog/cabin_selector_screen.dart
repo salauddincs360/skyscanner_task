@@ -134,7 +134,7 @@ class CabinSelectorScreenState extends State<CabinSelectorScreen> {
                     children: [
                       Container(
                         width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.only(left: 5,right: 5,top: 10,bottom: 3),
+                        margin: EdgeInsets.only(left: 5,right: 5,top: 10,bottom: 7),
                         child: ElevatedButton(
                           onPressed: (){
                             Navigator.of(context).pop();

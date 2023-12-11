@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:skyscanner_task/res/colors/ColorsHelper.dart';
 import 'package:skyscanner_task/views/search/airport_search/from_airport_selector_screen.dart';
+import 'package:skyscanner_task/views/search/date_picker/date_picker_screen.dart';
 import 'package:skyscanner_task/views/search/dialog/cabin_selector_screen.dart';
 import 'package:skyscanner_task/views/search/dialog/travelers_quantity_screen.dart';
 import 'package:skyscanner_task/views/search/result/search_result_screen.dart';
@@ -201,7 +202,7 @@ class MulticityScreenState extends State<MulticityScreen> {
                 bottom: -20,
                 child: InkWell(
                   onTap: (){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>SearchResultScreen()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DatePickerScreen()));
 
                   },
                   child: CircleAvatar(
