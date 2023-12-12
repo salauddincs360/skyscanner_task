@@ -1,16 +1,15 @@
-# skyscanner_task
+SkyScanner App Task By Innovate Solution.
+## Features
 
-A new Flutter project.
+- Flight Search From World Any Corner
+- Avaliable All Airports
+- Range Wise Filtering Option
+- Adult,Children,Infrant Selection Option
+- Return Ticket Also Buy Option
+- Business,Economic and other class Selection Option
+- Multiple Flight Search Option Different Different Country.
 
-## Getting Started
+![](https://drive.google.com/uc?id=14E_juSWBtPJaUTVjiLtRF3R3dsYWByOS)
 
-This project is a starting point for a Flutter application.
+https://github.com/salauddincs360/skyscanner_task/assets/98937667/0ee99e15-125e-448c-a485-7e237989c6a0
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
