@@ -4,14 +4,16 @@ import 'package:simple_vertical_calendar/simple_vertical_calendar.dart';
 import 'package:skyscanner_task/controller/SearchController.dart';
 import 'package:skyscanner_task/res/colors/ColorsHelper.dart';
 import 'package:intl/intl.dart';
-class DatePickerScreen extends StatefulWidget {
-  const DatePickerScreen({Key? key}) : super(key: key);
+class DatePickerMultiCity extends StatefulWidget {
+
+  var pos;
+  DatePickerMultiCity(this.pos);
 
   @override
-  State<DatePickerScreen> createState() => _DatePickerScreenState();
+  State<DatePickerMultiCity> createState() => DatePickerMultiCityState();
 }
 
-class _DatePickerScreenState extends State<DatePickerScreen> {
+class DatePickerMultiCityState extends State<DatePickerMultiCity> {
 
   ScrollController _scrollController=ScrollController();
 
@@ -40,8 +42,7 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
               child: InkWell(
                 onTap: (){
 
-                  _searchController.SetTravelDate("Anytime");
-                  _searchController.SetReturnDate("Anytime");
+                  _searchController.SetMultiCityDate(widget.pos,"Anytime");
 
                   Navigator.of(context).pop();
 
@@ -98,7 +99,7 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
                           child: TextFormField(
                             readOnly: true,
                             decoration: InputDecoration(
-                                hintText: "${controller.date_range_start_date}",
+                                hintText: "${controller.multiple_flight[widget.pos]["date"]}",
                                 hintStyle: TextStyle(color: Colors.black54),
                                 isDense: true,
                                 contentPadding: EdgeInsets.only(left: 10,right: 10,top: 14,bottom: 15),
@@ -114,41 +115,7 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
                           ),
 
                         ),
-                        SizedBox(width: 10,),
-                        Expanded(
-                          child: TextFormField(
-                            readOnly: true,
-                            decoration: InputDecoration(
-                                hintText: "${controller.date_range_end_date}",
-                                hintStyle: TextStyle(color: Colors.black54),
-                                isDense: true,
-                                // suffixIcon: Icon(Icons.add),
-                                suffixIcon: InkWell(
-                                    onTap: (){
 
-                                      if(controller.date_range_end_date=="Add return"){
-                                        controller.SetDateRangeEndDate("Roundtrip");
-                                      }else{
-                                        controller.SetDateRangeEndDate("Add return");
-                                      }
-
-                                    },
-                                    child: controller.date_range_end_date=="Add return"?Icon(Icons.add):Icon(Icons.close)
-                                ),
-
-                                contentPadding: EdgeInsets.only(left: 10,right: 10),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                                    borderSide: BorderSide(color: Colors.black12)
-                                ),
-                                border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                                    borderSide: BorderSide(color: Colors.black12)
-                                )
-                            ),
-                          ),
-
-                        ),
                         SizedBox(width: 10,),
                       ],
                     ),
@@ -189,7 +156,7 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
                   textAlgin: TextAlign.left,
                   monthFormat: MonthFormats.MONTH_ONLY,
                 ),
-                calendarOption: controller.date_range_end_date!="Add return"?CalendarOptions.RANGE_SELECTION:CalendarOptions.SINGLE, // [RANGE_SELECTION, SINGLE]
+                calendarOption:CalendarOptions.SINGLE, // [RANGE_SELECTION, SINGLE]
                 dayStyle: DayHeaderStyle(
                   textColor: Colors.black,
                   unavailableTextColor: Colors.black12,
@@ -199,21 +166,12 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
                 ),
 
                 onDateTap: (start, end) {
-                  
+
                   var start_date=DateFormat("EE, MMM d").format(start);
-                  controller.SetDateRangeStartDate(start_date);
-                  controller.SetTravelDate(start_date);
 
-                  print("END ${end} = ${start}");
+                  _searchController.SetMultiCityDate(widget.pos,start_date);
 
 
-                  if(start!=end){
-                    var end_date=DateFormat("EE, MMM d").format(end!);
-                    controller.SetDateRangeEndDate(start_date);
-                    controller.SetReturnDate(end_date);
-                  }
-
-                  
                 },
               ),
               flex: 10,
@@ -228,25 +186,17 @@ class _DatePickerScreenState extends State<DatePickerScreen> {
                 children: [
                   SizedBox(width: 20,),
                   Expanded(
-                    child:controller.date_range_end_date=="Add return"?Column(
+                    child:Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("One-Way"),
-                      ],
-                    ):Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                      Text("Roundtrip"),
-
                       ],
                     ),
                     flex: 4,
                   ),
                   Expanded(child:InkWell(
                     onTap: (){
-                      controller.CleanDateRange();
                       Navigator.of(context).pop();
                     },
                     child: Container(

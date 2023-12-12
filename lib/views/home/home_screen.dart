@@ -1,5 +1,7 @@
 import 'package:contained_tab_bar_view/contained_tab_bar_view.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:skyscanner_task/controller/SearchController.dart';
 import 'package:skyscanner_task/res/colors/ColorsHelper.dart';
 import 'package:skyscanner_task/views/search/multicity_screen.dart';
 import 'package:skyscanner_task/views/search/one_way_screen.dart';
@@ -25,14 +27,15 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         color: ColorsHelper().appbar_color,
         child: ContainedTabBarView(
+          initialIndex: 0,
           tabs: [
             Text('ROUNDTRIP'),
             Text('ONE-WAY'),
             Text('MULTI-CITY'),
           ],
           tabBarProperties: TabBarProperties(
-            indicatorColor: Colors.white,
-            height: 35
+              indicatorColor: Colors.white,
+              height: 35
           ),
           views: [
             Container(

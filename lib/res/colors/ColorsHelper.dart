@@ -4,7 +4,7 @@ class ColorsHelper{
 
   var appbar_color=Color(0xff100933);
 
-  var background_color=Color(0xff6f6b80);
+  var background_color=Colors.grey[400];
 
   var circular_arrow=Color(0xff097f91);
 
